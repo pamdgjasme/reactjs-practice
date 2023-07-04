@@ -1,3 +1,11 @@
+# Important!
+This just a code-along project to learn ReactJS.
+
+Planning to add Admin System for practice.
+
+Reference: [IsraTech](https://www.youtube.com/@IsraTech1) [🌋 Create Travel and Tour Website Using ReactJS | React Project 2022](https://www.youtube.com/watch?v=309beMyhXtg&pp=ygUUYm9va2luZyBhcHAgcmVhY3QganM%3D)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
