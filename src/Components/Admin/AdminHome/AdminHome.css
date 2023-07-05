@@ -39,6 +39,20 @@
 .adminHomeSection .cardBlock .cardContent .cardTitle {
   display: flex;
   align-items: center;
+  color: var(--blackColor);
+  position: relative;
+  z-index: 2;
+}
+.adminHomeSection .cardBlock .cardContent .cardTitle::after {
+  position: absolute;
+  content: "";
+  background: var(--SecondaryColor);
+  height: 5px;
+  width: 65px;
+  left: 0px;
+  right: 0;
+  bottom: 2px;
+  z-index: -1;
 }
 .adminHomeSection .cardBlock .cardContent .cardTitle .listingCount {
   color: var(--PrimaryColor);

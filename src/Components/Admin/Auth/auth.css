@@ -12,7 +12,7 @@
   --cardBG: rgb(225, 225, 235);
 }
 
-.loginContent {
+.authSection .loginContent {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -20,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.loginContent .loginCard {
+.authSection .loginContent .loginCard {
   padding: 2rem 1rem;
   background: var(--whiteColor);
   border-radius: 10px;
@@ -28,23 +28,23 @@
   flex-direction: column;
   gap: 0.5rem;
 }
-.loginContent .loginCard h4 {
+.authSection .loginContent .loginCard h4 {
   color: var(--textColor);
   margin: 1rem 0;
 }
-.loginContent .loginCard label {
+.authSection .loginContent .loginCard label {
   display: block;
   color: var(--textColor);
   font-size: 13px;
   font-weight: 500;
 }
-.loginContent .loginCard .inputBlock {
+.authSection .loginContent .loginCard .inputBlock {
   height: 40px;
   padding: 0 1rem;
   background: var(--inputColor);
   border-radius: 3rem;
 }
-.loginContent .loginCard .inputBlock input {
+.authSection .loginContent .loginCard .inputBlock input {
   background: none;
   border: none;
   outline: none;
@@ -52,17 +52,17 @@
   font-size: 13px;
   font-weight: 500;
 }
-.loginContent .loginCard .signInBtn {
+.authSection .loginContent .loginCard .signInBtn {
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
-.loginContent .loginCard .signInBtn .btn {
+.authSection .loginContent .loginCard .signInBtn .btn {
   justify-content: center;
   display: flex;
   color: var(--whiteColor);
 }
-.loginContent .loginCard .signInBtn .btn .icon {
+.authSection .loginContent .loginCard .signInBtn .btn .icon {
   font-size: 18px;
   color: var(--whiteColor);
   margin-right: 10px;

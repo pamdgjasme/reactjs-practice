@@ -6,7 +6,7 @@ import './auth.css'
 
 function Auth() {
   return (
-    <section>
+    <section className='authSection'>
       <div className="loginContent container">
         <div className="loginCard">
           <h4>Login to your account</h4>
