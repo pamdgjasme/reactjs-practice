@@ -1,0 +1,93 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDim: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+}
+
+.adminHomeSection {
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+  .cardBlock {
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    display: grid;
+    gap: 1rem;
+    .cardContent {
+      background: var(--whiteColor);
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+      border-radius: 5px;
+      position: relative;
+      height: 6rem;
+      cursor: pointer;
+      .cardTitle {
+        display: flex;
+        align-items: center;
+        .listingCount {
+          color: var(--PrimaryColor);
+          padding-left: .25rem;
+          align-self: start;
+        }
+        .icon {
+          color: var(--PrimaryColor);
+          font-size: 1.25rem;
+          align-self: start;
+          padding-left: 0.25rem;
+        }
+      }
+      .description {
+        color: var(--textColor);
+        font-size: 13px;
+        bottom: 10px;
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+      }
+
+        
+      &:hover {
+        background: var(--gradientColor);
+        .cardTitle, .description, .listingCount, .icon {
+          color: var(--whiteColor);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 320px) {  
+  .adminHomeSection {
+    .cardBlock {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {  
+  .adminHomeSection {
+    .cardBlock {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {  
+  .adminHomeSection {
+    .cardBlock {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

@@ -13,15 +13,14 @@
 }
 
 .adminFooterContent {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
-
-  .footerText {
-    display: flex;
-    justify-content: center;
-    background: var(--SecondaryColor);
-    color: var(--whiteColor);
-    font-size: 10px;
-  }
 }
+.adminFooterContent .footerText {
+  display: flex;
+  justify-content: center;
+  background: var(--SecondaryColor);
+  color: var(--whiteColor);
+  font-size: 10px;
+}/*# sourceMappingURL=AdminFooter.css.map */

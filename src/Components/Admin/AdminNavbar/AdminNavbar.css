@@ -12,15 +12,15 @@
   --cardBG: rgb(225, 225, 235);
 }
 
-.adminFooterContent {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-.adminFooterContent .footerText {
+.adminNavSection header .userInformation {
+  align-items: center;
   display: flex;
-  justify-content: center;
-  background: var(--SecondaryColor);
-  color: var(--whiteColor);
-  font-size: 10px;
-}/*# sourceMappingURL=AdminFooter.css.map */
+}
+.adminNavSection header .userInformation span {
+  color: var(--textColor);
+  font-size: 13px;
+}
+.adminNavSection header .userInformation .icon {
+  padding-left: 0.5rem;
+  color: var(--PrimaryColor);
+}/*# sourceMappingURL=AdminNavbar.css.map */
