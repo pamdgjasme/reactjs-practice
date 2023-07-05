@@ -1,5 +1,5 @@
 import React from 'react'
-import './app.css'
+import './App.css'
 import Auth from './Components/Admin/Auth/Auth'
 import AdminNavbar from './Components/Admin/AdminNavbar/AdminNavbar'
 import AdminFooter from './Components/Admin/AdminFooter/AdminFooter'
