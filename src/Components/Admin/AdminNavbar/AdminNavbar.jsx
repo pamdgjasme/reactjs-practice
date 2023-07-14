@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { MdOutlineTravelExplore } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg'
 import './AdminNavbar.css'
-import { Outlet, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-export class Navbar extends Component {
+class Navbar extends Component {
   render() {
+    const adminUsername = localStorage.getItem('adminUsername');
+    
     return (
       <section className='adminNavSection'>
         <header className="header flex">
@@ -15,7 +17,7 @@ export class Navbar extends Component {
             </Link>
           </div>
           <div className="userInformation">
-            <span>{this.props.username}</span> <CgProfile className='icon'/>
+            <span>{adminUsername}</span> <CgProfile className='icon'/>
           </div>
         </header>
       </section>

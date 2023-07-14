@@ -1,0 +1,94 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDim: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+  --cardHover: rgb(255, 255, 255);
+}
+
+.listingsSection {
+  padding: 5rem 0.5rem;
+  gap: 1.5rem;
+  justify-content: center;
+  display: grid;
+  width: 100%;
+}
+.listingsSection h1 {
+  align-self: center;
+}
+.listingsSection .listingContent {
+  height: 100%;
+  background: var(--cardBG);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  overflow: hidden;
+  border-radius: 5px;
+}
+.listingsSection .listingContent:hover {
+  background: var(--cardHover);
+  box-shadow: 1 4px 4px rgba(85, 85, 114, 0.549);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.listingsSection .listingContent .imgDiv {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+}
+.listingsSection .listingContent .imgDiv img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 2s ease;
+}
+.listingsSection .listingContent .imgDiv:hover img {
+  transform: scale(1.1s);
+}
+.listingsSection .listingContent .cardInfo {
+  padding: 0.5rem;
+}
+.listingsSection .listingContent .cardInfo .titleBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: var(--blackColor);
+}
+.listingsSection .listingContent .cardInfo .location {
+  color: var(--textColor);
+  font-size: 0.8rem;
+}
+.listingsSection .listingContent .cardInfo .bookingBlock {
+  color: var(--PrimaryColor);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.listingsSection .listingContent .cardInfo .bookingBlock .times {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--textColor);
+  font-weight: 300;
+}
+
+@media screen and (min-width: 768px) {
+  .listingsSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .listingsSection {
+    padding: 7rem 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .listingsSection {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}/*# sourceMappingURL=YourListings.css.map */

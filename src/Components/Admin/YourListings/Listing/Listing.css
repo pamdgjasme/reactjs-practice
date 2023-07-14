@@ -1,0 +1,95 @@
+.listingFormBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem !important;
+  padding-top: 8rem !important;
+}
+.listingFormBlock #listingForm {
+  padding: 1rem;
+  background: var(--whiteColor);
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+}
+.listingFormBlock #listingForm h5 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.listingFormBlock #listingForm h5 .icon {
+  font-size: 1.5rem;
+}
+.listingFormBlock #listingForm h2 {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+.listingFormBlock #listingForm h2::after {
+  position: absolute;
+  content: "";
+  background: var(--SecondaryColor);
+  height: 5px;
+  width: 89px;
+  left: 64px;
+  right: 0;
+  bottom: 3px;
+  z-index: -1;
+}
+.listingFormBlock #listingForm .imgDiv {
+  height: 400px;
+  margin-bottom: 1.5rem;
+}
+.listingFormBlock #listingForm .imgDiv img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.listingFormBlock #listingForm .inputGroup {
+  margin-bottom: 1rem;
+}
+.listingFormBlock #listingForm .inputGroup input, .listingFormBlock #listingForm .inputGroup textarea {
+  outline: none;
+  border: none;
+  background-color: var(--inputColor);
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+}
+.listingFormBlock #listingForm .inputGroup label {
+  color: var(--textColor);
+  font-size: 14px;
+}
+.listingFormBlock #listingForm .btnDiv {
+  justify-content: center;
+  display: flex;
+}
+.listingFormBlock #listingForm .btnDiv .btn {
+  justify-content: center;
+  color: var(--whiteColor);
+  font-weight: 500;
+  gap: 0.5rem;
+}
+.listingFormBlock #listingForm .btnDiv .btn .icon {
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .listingFormBlock {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .listingFormBlock {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .listingFormBlock {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+}/*# sourceMappingURL=Listing.css.map */

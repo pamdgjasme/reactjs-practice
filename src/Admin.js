@@ -8,9 +8,12 @@ import AdminHome from './Components/Admin/AdminHome/AdminHome'
 const App = () => {
   const isUserLoggedIn = true
   const username = 'Geneva'
+  
+  localStorage.setItem('adminUsername', username);
+
   return(
     <>
-    <AdminNavbar username={ isUserLoggedIn ? username : null} />
+    <AdminNavbar />
     { 
       isUserLoggedIn ? <AdminHome/> : <Auth />
     }
