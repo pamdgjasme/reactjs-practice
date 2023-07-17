@@ -1,7 +1,9 @@
 # Important!
-This just a code-along project to learn ReactJS.
+The client side of this project is from ReactJS tutorial.
 
-Planning to add Admin System for practice.
+I've added the admin side for practice:
+
+https://reactjs-practice-jet.vercel.app/admin/
 
 Reference: [IsraTech](https://www.youtube.com/@IsraTech1) [🌋 Create Travel and Tour Website Using ReactJS | React Project 2022](https://www.youtube.com/watch?v=309beMyhXtg&pp=ygUUYm9va2luZyBhcHAgcmVhY3QganM%3D)
 
