@@ -1,7 +1,4 @@
 import React from 'react'
-import { BiLogIn } from 'react-icons/bi'
-import { PiFinnTheHuman } from 'react-icons/pi'
-import { RiLockPasswordLine } from 'react-icons/ri'
 import './ContactUs.css'
 import NavBar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'

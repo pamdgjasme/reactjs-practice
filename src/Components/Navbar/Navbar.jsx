@@ -14,7 +14,6 @@ const Navbar = () => {
     setActive('navBar')
   }
   return (
-    // <h1>hello</h1>
     <section className='navBarSection'>
       <header className='header flex'>
         <div className='logoDiv'>
@@ -28,25 +27,25 @@ const Navbar = () => {
               <Link to={'/'} className="navLink">Home</Link>
             </li>
             <li className="navItem">
-              <a href='#' className="navLink">Packages</a>
+              <a href='/' className="navLink">Packages</a>
             </li>
             <li className="navItem">
-              <a href='#' className="navLink">Shop</a>
+              <a href='/' className="navLink">Shop</a>
             </li>
             <li className="navItem">
-              <a href='#' className="navLink">About</a>
+              <a href='/' className="navLink">About</a>
             </li>
             <li className="navItem">
-              <a href='#' className="navLink">Pages</a>
+              <a href='/' className="navLink">Pages</a>
             </li>
             <li className="navItem">
-              <a href='#' className="navLink">News</a>
+              <a href='/' className="navLink">News</a>
             </li>
             <li className="navItem">
               <Link to={`/contact-us`} className="navLink">Contact</Link>
             </li>
             <button className='btn'>
-              <a href='#'>BOOK NOW</a>
+              <a href='/'>BOOK NOW</a>
             </button>
           </ul>
 
