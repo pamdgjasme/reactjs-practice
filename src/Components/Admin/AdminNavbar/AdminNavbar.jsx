@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 class Navbar extends Component {
   render() {
-    const adminUsername = localStorage.getItem('adminUsername');
+    const adminUsername = localStorage.getItem('currentUserFullname');
     
     return (
       <section className='adminNavSection'>

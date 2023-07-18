@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Auth from './Components/Admin/Auth/Auth'
 import AdminNavbar from './Components/Admin/AdminNavbar/AdminNavbar'
@@ -6,18 +6,14 @@ import AdminFooter from './Components/Admin/AdminFooter/AdminFooter'
 import AdminHome from './Components/Admin/AdminHome/AdminHome'
 
 const App = () => {
-  const isUserLoggedIn = true
-  const username = 'Geneva'
-  
-  localStorage.setItem('adminUsername', username);
-
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!localStorage.getItem('currentUserFullname'))
   return(
     <>
-    <AdminNavbar />
-    { 
-      isUserLoggedIn ? <AdminHome/> : <Auth />
-    }
-    <AdminFooter />
+      <AdminNavbar />
+      { 
+        isUserLoggedIn ? <AdminHome/> : <Auth setIsUserLoggedIn={setIsUserLoggedIn} />
+      }
+      <AdminFooter />
     </>
   )
 }

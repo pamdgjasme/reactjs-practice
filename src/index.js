@@ -4,6 +4,7 @@ import App from './App'
 import Admin from './Admin'
 import ContactUs from './Components/ContactUs/ContactUs'
 import YourListings from './Components/Admin/YourListings/YourListings'
+import Profile from './Components/Admin/Profile/Profile'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -24,6 +25,10 @@ const router =  createBrowserRouter([
   {
     path: '/contact-us',
     element: <ContactUs />
+  },
+  {
+    path: 'admin/profile',
+    element: <Profile />
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'))

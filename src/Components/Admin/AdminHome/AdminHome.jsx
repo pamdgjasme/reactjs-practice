@@ -16,10 +16,10 @@ class AdminHome extends Component {
             <h4 className="cardTitle">Contact us <AiOutlineMail className='icon'/></h4>
             <p className="description">We are one email away! Message us for questions and concerns.</p>
           </Link>
-          <div className="cardContent">
+          <Link to={'profile'} className="cardContent">
             <h4 className="cardTitle">Update your profile<AiOutlineEdit className='icon'/></h4>
             <p className="description">Last update: March 03, 2022</p>
-          </div>
+          </Link>
         </div>
       </section>
     )
