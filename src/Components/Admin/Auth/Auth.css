@@ -88,6 +88,7 @@
   margin-right: 10px;
 }
 
+/* media queries */
 @media screen and (min-width: 500px) {
   .loginContent {
     max-width: 90%;
