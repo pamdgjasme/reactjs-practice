@@ -6,11 +6,31 @@ import './Auth.css'
 import ApiService from '../../../Services/ApiService'
 import { ProgressBar } from  'react-loader-spinner'
 import UserService from '../../../Services/UserService'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Auth({setIsUserLoggedIn}) {
   const [showLoader, setShowLoader] = useState(false)
-  console.log(process.env.REACT_APP_API_URL, process.env.NODE_ENV)
-
+  
+  const notify  = (message, type = 'default') => {
+    const options = {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light"
+    }
+    
+    if (type === 'error') {
+      toast.error(message, options)
+    } else {
+      toast.success(message, options)
+    }
+  }
+  
   const headers = (method = 'GET', data = {}) => {
     return { method: method, headers: ApiService.defaultHttpHeader(), body: JSON.stringify(data) };
   }
@@ -24,20 +44,24 @@ function Auth({setIsUserLoggedIn}) {
       password: event.target.elements.password.value,
     }
 
-    const response = await fetch(`${process.env.REACT_APP_API_URL}api/admin/login`, headers('POST', data))
-    const responseJson = await response.json();
+    const response     = await fetch(`${process.env.REACT_APP_API_URL}api/admin/login`, headers('POST', data))
+    const responseJson = await response.json()
 
     if (response.ok) {
-      setShowLoader(false);
+      notify('Login successful!', 'success')
       UserService.setCurrentUser(responseJson)
+      setShowLoader(false)
       setIsUserLoggedIn(true)
     } else {
-      console.log(responseJson.error)
+      notify(responseJson.error, 'error')
+      setIsUserLoggedIn(false)
     }
+    setShowLoader(false)
   }
 
   return (
     <section className='authSection'>
+      <ToastContainer />
       { showLoader && 
         <div className="overlay">
           <ProgressBar
