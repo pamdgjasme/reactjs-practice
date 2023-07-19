@@ -7,6 +7,7 @@ import AdminHome from './Components/Admin/AdminHome/AdminHome'
 
 const App = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!localStorage.getItem('currentUserFullname'))
+
   return(
     <>
       <AdminNavbar />
