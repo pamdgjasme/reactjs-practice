@@ -9,7 +9,7 @@ import UserService from '../../../Services/UserService'
 
 function Auth({setIsUserLoggedIn}) {
   const [showLoader, setShowLoader] = useState(false)
-  const apiURL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_URL_DEVELOPMENT : process.env.REACT_APP_API_URL_STAGING;
+  console.log(process.env.REACT_APP_API_URL, process.env.NODE_ENV)
 
   const headers = (method = 'GET', data = {}) => {
     return { method: method, headers: ApiService.defaultHttpHeader(), body: JSON.stringify(data) };
@@ -24,7 +24,7 @@ function Auth({setIsUserLoggedIn}) {
       password: event.target.elements.password.value,
     }
 
-    const response = await fetch(`${apiURL}api/admin/login`, headers('POST', data))
+    const response = await fetch(`${process.env.REACT_APP_API_URL}api/admin/login`, headers('POST', data))
     const responseJson = await response.json();
 
     if (response.ok) {
