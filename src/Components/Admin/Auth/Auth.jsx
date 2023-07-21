@@ -42,7 +42,7 @@ function Auth({setLoading, setIsUserLoggedIn}) {
       password: event.target.elements.password.value,
     }
 
-    const response     = await fetch(`${process.env.REACT_APP_API_URL}api/admin/login`, headers('POST', data))
+    const response     = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/login`, headers('POST', data))
     const responseJson = await response.json()
 
     if (response.ok) {

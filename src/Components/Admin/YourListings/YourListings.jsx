@@ -17,9 +17,9 @@ function YourListings({setLoading}) {
 
   useEffect(() => {
     const fetchData = async() => {
-      const response     = await fetch(`${process.env.REACT_APP_API_URL}api/admin/listings/`, headers())
+      const response     = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/listings/`, headers())
       const responseJson = await response.json()
-      
+      console.log(responseJson)
       dispatch({ type: 'FETCH_LISTINGS', payload: { data: responseJson }})
       setTimeout(() => {
         setLoading(false)
