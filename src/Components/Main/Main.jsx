@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import './main.css'
-import { HiOutlineClipboardCheck, HiOutlineLocationMarker } from 'react-icons/hi'
 import Aos from 'aos'
-import 'aos/dist/aos.css'
 import listingData from '../listingData'
-
+import { HiOutlineClipboardCheck, HiOutlineLocationMarker } from 'react-icons/hi'
+import 'aos/dist/aos.css'
+import './main.css'
 const Main = () => {
 
   useEffect(() => {

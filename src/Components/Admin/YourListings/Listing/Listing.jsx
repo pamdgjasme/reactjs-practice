@@ -15,10 +15,10 @@ function Listing() {
       location:    elements.location.value,
       grade:       elements.grade.value,
       fees:        elements.fees.value,
-      destTitle:   elements.destTitle.value,
+      name:        elements.name.value,
       description: elements.description.value,
       imgSrc:      state.listing.imgSrc,
-      id:          state.listing.id
+      image:       elements.image.value
     }
     dispatch({ type: 'UPDATE_LISTING', payload: listingData })
   }
@@ -33,11 +33,15 @@ function Listing() {
         }><IoIosArrowRoundBack className='icon'/>Back to Listings</h5>
         <h2>Your Listing</h2>
         <div className="imgDiv">
-          <img id='listingImg' src={state.listing.imgSrc || ''} alt={state.listing.destTitle}/>
+          <img id='listingImg' src={`${process.env.REACT_APP_API_URL}${state.listing.photos[0]}` || ''} alt={state.listing.name}/>
         </div>
         <div className="inputGroup">
-          <label htmlFor="destTitle">Listing Title</label>
-          <input type="text" id="destTitle" defaultValue={state.listing.destTitle}/>
+          <label htmlFor="image">Upload photo</label>
+          {/* <input type="file" id="image" defaultValue={state.listing.name}/> */}
+        </div>
+        <div className="inputGroup">
+          <label htmlFor="name">Listing Title</label>
+          <input type="text" id="name" defaultValue={state.listing.name}/>
         </div>
         <div className="inputGroup">
           <label htmlFor="location">Location</label>

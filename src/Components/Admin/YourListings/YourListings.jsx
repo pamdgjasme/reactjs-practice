@@ -1,57 +1,81 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import AdminNavbar from '../AdminNavbar/AdminNavbar'
-import listingData from '../../listingData'
-import './YourListings.css'
+import ApiService from '../../../Services/ApiService'
 import Listing from './Listing/Listing'
+import IsLoadingShared from '../../../Shared/IsLoadingShared'
 import { yourListingsReducer } from './YourListingsReducer'
 import { YourListingsContext, YourListingsDispatchContext } from './YourListingsContext'
+import './YourListings.css'
 
-const YourListings = () => {
-  const initialState = { showListingDetails: false, listing: {}, listings: listingData}
+function YourListings({setLoading}) {
+  const initialState = { showListingDetails: false, listing: {}, listings: [] }
   const [state, dispatch] = useReducer(yourListingsReducer, initialState)
+
+  const headers = (method = 'GET', data = {}) => {
+    return { method: method, headers: ApiService.defaultHttpHeader() };
+  }
+
+  useEffect(() => {
+    const fetchData = async() => {
+      const response     = await fetch(`${process.env.REACT_APP_API_URL}api/admin/listings/`, headers())
+      const responseJson = await response.json()
+      
+      dispatch({ type: 'FETCH_LISTINGS', payload: { data: responseJson }})
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000);
+    }
+    fetchData()
+  }, [setLoading])
+
+  const renderListings = () => {
+    return (
+      <>
+        <AdminNavbar />
+        {
+          !state.showListingDetails ?
+          <div className='listingsSection'>
+            <h1>Your Listings</h1>
+            {
+              state.listings.length && state.listings.map(listing => (
+                <div className='listingContent' key={listing.id} onClick={() => goToListingForm(listing)}>
+                  <div className="imgDiv">
+                    <img src={`${process.env.REACT_APP_API_URL}${listing.photos[0]}`} alt={listing.name} />
+                  </div>
+                  <div className="cardInfo">
+                    <div className="titleBlock">
+                      <div>{listing.name}</div>
+                      <div className='bookingBlock'>
+                        {listing.noOfBookings}
+                        <span className='times'>&nbsp;times booked!</span>
+                      </div>
+                    </div>
+                    <div className='location'>{listing.location}</div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+          :
+          <Listing listing={state.listing} showListingDetails={state.showListingDetails} />
+        }
+      </>
+    )
+  }
+
+  const goToListingForm = (listing) => {
+    dispatch({ type: 'GO_TO_LISTING', payload: { data: listing } })
+  }
 
   return (
     <>
       <YourListingsContext.Provider value={state}>
         <YourListingsDispatchContext.Provider value={dispatch}>
-          <AdminNavbar />
-          { !state.showListingDetails &&
-            <div className='listingsSection'>
-              <h1>Your Listings</h1>
-              {
-                state.listings.map(listing => {
-                  return (
-                    <div 
-                      className='listingContent'
-                      key={listing.id}
-                      onClick={event => {
-                        dispatch({ type: 'GO_TO_LISTING', payload: { data: listing } })
-                      }
-                    }>
-                      <div className="imgDiv">
-                        <img src={listing.imgSrc} alt={listing.destTitle} />
-                      </div>
-                      <div className="cardInfo">
-                        <div className="titleBlock">
-                          <div>{listing.destTitle}</div>
-                          <div className='bookingBlock'>
-                            {listing.noOfBookings}
-                            <span className='times'>&nbsp;times booked!</span>
-                          </div>
-                        </div>
-                        <div className='location'>{listing.location}</div>
-                      </div>
-                    </div>
-                  )
-                })
-              }
-            </div>
-          }
-          { state.showListingDetails && <Listing listing={state.listing} showListingDetails={state.showListingDetails} />}
+          { renderListings() }
         </YourListingsDispatchContext.Provider>
       </YourListingsContext.Provider>
     </>
   )
 }
 
-export default YourListings
+export default IsLoadingShared(YourListings, 'Please wait while we gather your listings..')

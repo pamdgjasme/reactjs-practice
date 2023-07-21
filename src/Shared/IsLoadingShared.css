@@ -1,0 +1,26 @@
+.overlay-loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(252, 252, 252, 0.94);
+  z-index: 2;
+}
+.overlay-loader .progress-bar-wrapper {
+  font-size: 50px;
+  color: white;
+  top: 50%;
+}
+.overlay-loader h4, .overlay-loader .progress-bar-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.overlay-loader h4 {
+  top: 55%;
+  color: var(--PrimaryColor);
+}/*# sourceMappingURL=IsLoadingShared.css.map */

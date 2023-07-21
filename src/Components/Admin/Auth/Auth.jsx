@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
+import ApiService from '../../../Services/ApiService'
+import UserService from '../../../Services/UserService'
+import IsLoadingShared from '../../../Shared/IsLoadingShared'
 import { BiLogIn } from 'react-icons/bi'
 import { PiFinnTheHuman } from 'react-icons/pi'
 import { RiLockPasswordLine } from 'react-icons/ri'
-import './Auth.css'
-import ApiService from '../../../Services/ApiService'
-import { ProgressBar } from  'react-loader-spinner'
-import UserService from '../../../Services/UserService'
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
+import './Auth.css'
 
-function Auth({setIsUserLoggedIn}) {
-  const [showLoader, setShowLoader] = useState(false)
+function Auth({setLoading, setIsUserLoggedIn}) {
   
   const notify  = (message, type = 'default') => {
     const options = {
@@ -37,8 +36,7 @@ function Auth({setIsUserLoggedIn}) {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    setShowLoader(true);
-
+    setLoading(true)
     const data = {
       email:    event.target.elements.email.value,
       password: event.target.elements.password.value,
@@ -48,58 +46,41 @@ function Auth({setIsUserLoggedIn}) {
     const responseJson = await response.json()
 
     if (response.ok) {
-      notify('Login successful!', 'success')
       UserService.setCurrentUser(responseJson)
-      setShowLoader(false)
-      setIsUserLoggedIn(true)
+      setTimeout(() => {
+        setLoading(false)
+        setIsUserLoggedIn(true)
+      }, 2000);
     } else {
       notify(responseJson.error, 'error')
-      setIsUserLoggedIn(false)
     }
-    setShowLoader(false)
   }
 
   return (
     <section className='authSection'>
       <ToastContainer />
-      { showLoader && 
-        <div className="overlay">
-          <ProgressBar
-            height="80"
-            width="80"
-            ariaLabel="progress-bar-loading"
-            wrapperStyle={{}}
-            wrapperClass="progress-bar-wrapper"
-            borderColor='#F4442E'
-            barColor='#51E5FF'
-          />
-        </div>
-      }
-      {
-        !showLoader && 
-        <div className="loginContent container">
-          <form onSubmit={onSubmit} className="loginCard">
-            <h4>Login to your account</h4>
-            <label htmlFor="email">Email</label>
-            <div className="inputBlock flex">
-              <input type="text" id='email' />
-              <PiFinnTheHuman className="icon" />
-            </div>
+      <div className="loginContent container">
+        <form onSubmit={onSubmit} className="loginCard">
+          <h4>Login to your account</h4>
+          <label htmlFor="email">Email</label>
+          <div className="inputBlock flex">
+            <input type="text" id='email' />
+            <PiFinnTheHuman className="icon" />
+          </div>
 
-            <label htmlFor="password">Password</label>
-            <div className="inputBlock flex">
-              <input type="password" id='password' />
-              <RiLockPasswordLine className="icon" />
-            </div>
+          <label htmlFor="password">Password</label>
+          <div className="inputBlock flex">
+            <input type="password" id='password' />
+            <RiLockPasswordLine className="icon" />
+          </div>
 
-            <div className="signInBtn">
-              <button className="btn" type='submit'><BiLogIn className='icon' />Login</button>
-            </div>
-          </form>
-        </div>
-      }
+          <div className="signInBtn">
+            <button className="btn" type='submit'><BiLogIn className='icon' />Login</button>
+          </div>
+        </form>
+      </div>
     </section>
   )
 }
 
-export default Auth
+export default IsLoadingShared(Auth, 'Logging you in..', false)

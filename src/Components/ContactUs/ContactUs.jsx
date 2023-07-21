@@ -1,8 +1,8 @@
 import React from 'react'
-import './ContactUs.css'
 import NavBar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import { FiSend } from 'react-icons/fi'
+import './ContactUs.css'
 
 function ContactUs() {
 

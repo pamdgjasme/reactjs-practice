@@ -4,8 +4,16 @@ const UserService = {
     localStorage.setItem('currentUserFullname', user.full_name)
     localStorage.setItem('currentUserId', user.id)
   },
-  getCurrentUser: function() {
-    localStorage.getItem('currentUser')
+  getCurrentUserToken: function() {
+    return localStorage.getItem('currentUserToken')
+  },
+  logout: function() {
+    localStorage.removeItem('currentUserToken')
+    localStorage.removeItem('currentUserFullname')
+    localStorage.removeItem('currentUserId')
+  },
+  isLoggedIn: function() {
+    return !!this.getCurrentUserToken()
   }
 }
 

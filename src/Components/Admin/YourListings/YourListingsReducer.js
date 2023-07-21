@@ -11,6 +11,7 @@ export const yourListingsReducer = (state, action) => {
       }
     }
     case 'GO_TO_LISTING': {
+      console.log(action.payload.data)
       return {
         ...state,
         listing: action.payload.data,
@@ -28,6 +29,13 @@ export const yourListingsReducer = (state, action) => {
         ...state,
         showListingDetails: false,
         listing: {}
+      }
+    }
+    case 'FETCH_LISTINGS': {
+      return {
+        ...state,
+        listings: action.payload.data,
+        showListingDetails: false
       }
     }
     default:

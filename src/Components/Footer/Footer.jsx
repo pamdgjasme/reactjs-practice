@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import './footer.css'
+import Aos from 'aos'
 import video from '../../Assets/video.mp4'
 import { FiChevronRight, FiSend } from 'react-icons/fi'
 import { MdOutlineTravelExplore } from 'react-icons/md'
 import { AiFillInstagram, AiOutlineTwitter, AiFillYoutube } from 'react-icons/ai'
 import { FaTripadvisor } from 'react-icons/fa';
-import Aos from 'aos'
 import 'aos/dist/aos.css'
+import './footer.css'
 
 const Footer = () => {
 
