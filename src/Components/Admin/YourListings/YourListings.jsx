@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import AdminNavbar from '../AdminNavbar/AdminNavbar'
 import ApiService from '../../../Services/ApiService'
+import UserService from '../../../Services/UserService'
 import Listing from './Listing/Listing'
 import IsLoadingShared from '../../../Shared/IsLoadingShared'
 import { yourListingsReducer } from './YourListingsReducer'
@@ -19,11 +20,16 @@ function YourListings({setLoading}) {
     const fetchData = async() => {
       const response     = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/listings/`, headers())
       const responseJson = await response.json()
-      console.log(responseJson)
-      dispatch({ type: 'FETCH_LISTINGS', payload: { data: responseJson }})
-      setTimeout(() => {
-        setLoading(false)
-      }, 1000);
+
+      if (response.ok) {
+        dispatch({ type: 'FETCH_LISTINGS', payload: { data: responseJson }})
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000);
+      } else {
+        UserService.logout()
+        window.location.href = '/admin'
+      }
     }
     fetchData()
   }, [setLoading])
@@ -40,7 +46,7 @@ function YourListings({setLoading}) {
               state.listings.length && state.listings.map(listing => (
                 <div className='listingContent' key={listing.id} onClick={() => goToListingForm(listing)}>
                   <div className="imgDiv">
-                    <img src={`${process.env.REACT_APP_API_URL}${listing.photos[0]}`} alt={listing.name} />
+                    <img src={`${process.env.REACT_ASSET_URL}${listing.photos[0]}`} alt={listing.name} />
                   </div>
                   <div className="cardInfo">
                     <div className="titleBlock">
