@@ -33,7 +33,7 @@ function Listing() {
         }><IoIosArrowRoundBack className='icon'/>Back to Listings</h5>
         <h2>Your Listing</h2>
         <div className="imgDiv">
-          <img id='listingImg' src={`${process.env.REACT_APP_API_URL}${state.listing.photos[0]}` || ''} alt={state.listing.name}/>
+          <img id='listingImg' src={state.listing.photos[0]} alt={state.listing.name}/>
         </div>
         <div className="inputGroup">
           <label htmlFor="image">Upload photo</label>
