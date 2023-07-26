@@ -20,7 +20,6 @@ function YourListings({setLoading}) {
     const fetchData = async() => {
       const response     = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/listings/`, headers())
       const responseJson = await response.json()
-
       if (response.ok) {
         dispatch({ type: 'FETCH_LISTINGS', payload: { data: responseJson }})
         setTimeout(() => {
@@ -46,7 +45,7 @@ function YourListings({setLoading}) {
               state.listings.length && state.listings.map(listing => (
                 <div className='listingContent' key={listing.id} onClick={() => goToListingForm(listing)}>
                   <div className="imgDiv">
-                    <img src={listing.photos[0]} alt={listing.name} />
+                    <img src={ process.env.NODE_ENV === 'development' ? `${process.env.REACT_APP_ASSET_URL}${listing.photos[0]['url']}` : listing.photos[0]['url']} alt={listing.name} />
                   </div>
                   <div className="cardInfo">
                     <div className="titleBlock">
