@@ -10,8 +10,14 @@ export const yourListingsReducer = (state, action) => {
         })
       }
     }
+    case 'ADD_LISTING': {
+      return {
+        ...state,
+        listing: action.payload,
+        listings: [...state.listings, action.payload]
+      }
+    }
     case 'GO_TO_LISTING': {
-      console.log(action.payload.data)
       return {
         ...state,
         listing: action.payload.data,

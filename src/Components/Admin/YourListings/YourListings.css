@@ -23,18 +23,30 @@
 .listingsSection h1 {
   align-self: center;
 }
+.listingsSection h1 .icon {
+  margin-left: 5px;
+  color: var(--PrimaryColor);
+  cursor: pointer;
+}
 .listingsSection .listingContent {
   height: 100%;
   background: var(--cardBG);
   box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
   overflow: hidden;
   border-radius: 5px;
+  position: relative;
 }
 .listingsSection .listingContent:hover {
   background: var(--cardHover);
   box-shadow: 1 4px 4px rgba(85, 85, 114, 0.549);
   transition: 0.3s ease;
   cursor: pointer;
+}
+.listingsSection .listingContent .deleteListing {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: var(--PrimaryColor);
 }
 .listingsSection .listingContent .imgDiv {
   height: 180px;

@@ -21,6 +21,11 @@
   width: 100%;
   h1 {
     align-self: center;
+    .icon {
+      margin-left: 5px;
+      color: var(--PrimaryColor);
+      cursor: pointer;
+    }
   }
   .listingContent {
     height: 100%;
@@ -28,11 +33,19 @@
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
     overflow: hidden;
     border-radius: 5px;
+    position: relative;
     &:hover {
       background: var(--cardHover);
       box-shadow: 1 4px 4px rgba(85, 85, 114, 0.549);
       transition: .3s ease;
       cursor: pointer;
+    }
+
+    .deleteListing {
+      position: absolute;
+      right: 0;
+      top: 5px;
+      color: var(--PrimaryColor);
     }
 
     .imgDiv {

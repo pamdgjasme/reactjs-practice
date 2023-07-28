@@ -1,20 +1,23 @@
 import React, { useContext } from 'react'
-import UserService from '../../../../Services/UserService'
-import './Listing.css'
+import ListingService from '../../../../Services/ListingService'
+import IsLoadingShared from '../../../../Shared/IsLoadingShared'
+import imgPlaceholder from '../../../../Assets/image-placeholder.png'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import { YourListingsContext, YourListingsDispatchContext } from '../YourListingsContext'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import './Listing.css'
 
-function Listing() {
+function Listing({setLoading}) {
   const state    = useContext(YourListingsContext);
   const dispatch = useContext(YourListingsDispatchContext);
   const { register, handleSubmit, formState: { _errors } } = useForm()
 
-  const formSubmit = async (data) => {
+  const formSubmit = async (formValues) => {
+    setLoading(true)
     const formData = new FormData()
-    const post = { ...data, image: data.image[0] }
+    const post = { ...formValues, image: formValues.image[0] }
     formData.append('listing[listing_photos_attributes][0][image]', post.image)
     formData.append('listing[location]', post.location)
     formData.append('listing[grade]', post.grade)
@@ -23,18 +26,14 @@ function Listing() {
     formData.append('listing[description]', post.description)
     formData.append('listing[id]', state.listing.id)
 
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/listings/${state.listing.id}`, {
-      method: 'PATCH',
-      headers: { 'Authorization': UserService.getCurrentUserToken() },
-      body: formData
-    })
-    const responseJSON = await response.json();
-    
-    if (response.ok) {
-      notify('Successfully saved!')
-      dispatch({ type: 'UPDATE_LISTING', payload: responseJSON })
+    const data = await ListingService.submitListing(formData, dispatch)
+    if (data.status === 'ok') {
+      setTimeout(() => {
+        notify('Successfully saved!')
+        setLoading(false)
+      }, 500);
     } else {
-      notify(responseJSON.error, 'error')
+      notify(data.dataJson?.error, 'error')
     }
   }
 
@@ -57,6 +56,14 @@ function Listing() {
     }
   }
 
+  const photoURL = () => {
+    let image = state.listing.photos[0]['url']
+
+    if (['', null].includes(image)) return imgPlaceholder
+
+    return process.env.NODE_ENV === 'development' ? `${process.env.REACT_APP_ASSET_URL}${image}` : image
+  }
+
   return ( 
     <div className="listingFormBlock">
       <ToastContainer />
@@ -68,7 +75,7 @@ function Listing() {
         }><IoIosArrowRoundBack className='icon'/>Back to Listings</h5>
         <h2>Your Listing</h2>
         <div className="imgDiv">
-          <img id='listingImg' src={ process.env.NODE_ENV === 'development' ? `${process.env.REACT_APP_ASSET_URL}${state.listing.photos[0]['url']}` : state.listing.photos[0]['url']} alt={state.listing.name}/>
+          <img id='listingImg' src={ photoURL() } alt={state.listing.name}/>
         </div>
         <div className="inputGroup">
           <label htmlFor="image">Upload photo</label>
@@ -103,4 +110,4 @@ function Listing() {
   )
 }
 
-export default Listing
+export default IsLoadingShared(Listing, 'Saving..', false)
