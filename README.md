@@ -7,6 +7,7 @@ https://reactjs-practice-jet.vercel.app/admin/
 
 Reference: [IsraTech](https://www.youtube.com/@IsraTech1) [🌋 Create Travel and Tour Website Using ReactJS | React Project 2022](https://www.youtube.com/watch?v=309beMyhXtg&pp=ygUUYm9va2luZyBhcHAgcmVhY3QganM%3D)
 
+Rails server is down. You will not be able to sign-in hehe.
 
 # Getting Started with Create React App
 
